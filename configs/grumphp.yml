@@ -1,0 +1,11 @@
+parameters:
+  git_dir: .
+  bin_dir: vendor/bin
+  tasks:
+    phpcs:
+      standard: configs/phpcs.xml
+      triggered_by: ['php']
+    phpstan:
+      configuration: configs/phpstan.neon
+      level: 5
+      triggered_by: ['php']
