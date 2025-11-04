@@ -1,4 +1,4 @@
-FROM php:8.2-cli-bullseye-slim
+FROM php:8.2-cli
 LABEL maintainer="nntruong-voyager"
 
 RUN apt-get update && apt-get install -y --no-install-recommends     git unzip zip libzip-dev libpng-dev libonig-dev ca-certificates     && rm -rf /var/lib/apt/lists/*

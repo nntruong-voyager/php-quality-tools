@@ -9,8 +9,7 @@ This repository provides a **unified Docker environment** to analyze, format, an
 ## 🚀 Features
 
 - ✅ Unified setup: **PHP_CodeSniffer**, **PHPStan**, **GrumPHP**
-- 🐳 **Docker-based (PHP 8.2 - Debian Slim)**
-- 🧩 Works with any project (PHP 5.x → 8.x)
+- 🐳 **Docker**
 - 🔧 Auto Git pre-commit hooks
 - 📦 Zero-dependency setup — no need to install PHP locally
 
@@ -18,12 +17,12 @@ This repository provides a **unified Docker environment** to analyze, format, an
 
 ## ⚙️ Setup Guide
 
-> 💡 Works even if your project doesn’t currently use Docker.  
+> 💡 Works even if your project doesn’t currently use Docker.
 > This service runs separately and doesn’t interfere with your main stack.
 
 ---
 
-### 1️⃣ Install the toolkit
+### 1️⃣ Install via Composer
 
 Add this manually in your project’s `composer.json`:
 
@@ -36,7 +35,7 @@ Add this manually in your project’s `composer.json`:
     }
   ],
   "require-dev": {
-    "voyager/php-quality-tools": "dev-main"
+    "voyager/php-quality-tools": "^1.0"
   }
 }
 ````
@@ -57,12 +56,15 @@ At the root of your project, create (or append):
 ```yaml
 services:
   php-quality-tools:
-    image: voyager/php-quality-tools:latest
+    build:
+      context: ./vendor/voyager/php-quality-tools
+      dockerfile: Dockerfile
     container_name: php-quality-tools
     working_dir: /project
     volumes:
       - .:/project
     command: tail -f /dev/null
+
 ```
 
 > 🧩 If your project doesn’t have Docker yet, just place this file —
@@ -74,19 +76,14 @@ services:
 
 ```bash
 docker compose up -d php-quality-tools
-docker exec -it php-quality-tools bash
 ```
 
 ---
 
 ### 4️⃣ Run code quality checks
 
-Inside the container:
-
 ```bash
-vendor/bin/phpcs
-vendor/bin/phpstan analyse
-vendor/bin/grumphp run
+bash vendor/voyager/php-quality-tools/scripts/run-quality-checks.sh
 ```
 
 ---

@@ -2,7 +2,7 @@
 # Pre-commit hook wrapper: run grumphp inside container if available, else run vendor/bin/grumphp
 if command -v docker >/dev/null 2>&1; then
   if docker ps -a --format '{{.Names}}' | grep -q php-quality-tools; then
-    docker exec -it php-quality-tools bash -lc "cd /project || cd /app; vendor/bin/grumphp run"
+    docker exec -i php-quality-tools bash -lc "bash vendor/voyager/php-quality-tools/scripts/run-quality-checks.sh "
     exit $?
   fi
 fi
