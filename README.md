@@ -27,7 +27,7 @@ This repository provides a **unified Docker environment** to analyze, format, an
 Add this manually in your project’s `composer.json`:
 
 ```jsonc
-{
+
   "repositories": [
     {
       "type": "vcs",
@@ -37,7 +37,7 @@ Add this manually in your project’s `composer.json`:
   "require-dev": {
     "voyager/php-quality-tools": "^1.0"
   }
-}
+
 ````
 
 Then run:
@@ -83,18 +83,28 @@ docker compose up -d php-quality-tools
 ### 4️⃣ Run code quality checks
 
 ```bash
-bash vendor/voyager/php-quality-tools/scripts/run-quality-checks.sh
+docker-compose exec php-quality-tools bash /project/vendor/voyager/php-quality-tools/scripts/run-quality-checks.sh src,app
+```
+
+#### Custom Directory Specification
+```bash
+# or scan specific directories
+docker-compose exec php-quality-tools bash /project/vendor/voyager/php-quality-tools/scripts/run-quality-checks.sh app,src,custom
+
+# Get help
+bash docker-compose exec php-quality-tools bash /project/vendor/voyager/php-quality-tools/scripts/run-quality-checks.sh --help
 ```
 
 ---
 
 ### 5️⃣ Enable automatic Git checks
 
+#### Runs tools inside Docker container
 ```bash
-docker-compose exec php-quality-tools bash /project/vendor/voyager/php-quality-tools/scripts/run-quality-checks.sh src,tests
+docker-compose exec php-quality-tools bash /project/vendor/voyager/php-quality-tools/scripts/setup-hooks.sh
 ```
 
-This sets up pre-commit hooks so every commit runs the quality checks automatically.
+This sets up pre-commit hooks so every commit runs the quality checks automatically inside the Docker container. This ensures consistent environment regardless of local PHP version.
 
 ---
 
