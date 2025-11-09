@@ -2,7 +2,7 @@
 set -e
 
 echo ""
-echo "🐳 Setting up Docker-based Git Hooks for PHP Quality Tools"
+echo "🐳 Setting up Git Hooks for PHP Quality Tools"
 echo "=========================================================="
 
 # Path to project root (where this script is executed)
@@ -15,28 +15,6 @@ if [ ! -f "$PROJECT_DIR/docker-compose.override.yml" ] && [ ! -f "$PROJECT_DIR/d
   echo "❌ No docker-compose.yml or docker-compose.override.yml found in project root"
   echo "   Please ensure you have the php-quality-tools service configured in your docker-compose setup"
   exit 1
-fi
-
-# Check if php-quality-tools service is configured
-if ! docker-compose config 2>/dev/null | grep -q "php-quality-tools" && ! docker compose config 2>/dev/null | grep -q "php-quality-tools"; then
-  echo "⚠️  php-quality-tools service not found in docker-compose configuration"
-  echo "   Please add the php-quality-tools service to your docker-compose.override.yml"
-  echo ""
-  exit 1
-fi
-
-# Ensure the container is running
-echo "🔄 Checking if php-quality-tools container is running..."
-if docker compose ps php-quality-tools 2>/dev/null | grep -q "running" || docker-compose ps php-quality-tools 2>/dev/null | grep -q "Up"; then
-  echo "✅ php-quality-tools container is running"
-else
-  echo "⚠️ php-quality-tools container is not running. Starting it..."
-  if command -v "docker compose" &> /dev/null; then
-    docker compose up -d php-quality-tools
-  else
-    docker-compose up -d php-quality-tools
-  fi
-  echo "✅ Started php-quality-tools container"
 fi
 
 # Install GrumPHP hooks that will execute inside Docker

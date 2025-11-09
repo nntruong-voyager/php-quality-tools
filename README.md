@@ -85,6 +85,12 @@ docker compose up -d php-quality-tools
 ```bash
 docker-compose exec php-quality-tools bash /project/vendor/voyager/php-quality-tools/scripts/run-quality-checks.sh src,app
 ```
+#### You can add an alias (optional)
+```bash
+alias phpchecker='docker-compose exec php-quality-tools bash /project/vendor/voyager/php-quality-tools/scripts/run-quality-checks.sh'
+
+phpchecker src,app
+```
 
 #### Custom Directory Specification
 ```bash
