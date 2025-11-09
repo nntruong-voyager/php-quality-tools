@@ -35,7 +35,7 @@ Add this manually in your project’s `composer.json`:
     }
   ],
   "require-dev": {
-    "voyager/php-quality-tools": "^1.0"
+    "voyager/php-quality-tools": "^1.1"
   }
 
 ````
