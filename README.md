@@ -91,7 +91,7 @@ bash vendor/voyager/php-quality-tools/scripts/run-quality-checks.sh
 ### 5️⃣ Enable automatic Git checks
 
 ```bash
-bash vendor/voyager/php-quality-tools/scripts/setup-hooks.sh
+docker-compose exec php-quality-tools bash /project/vendor/voyager/php-quality-tools/scripts/run-quality-checks.sh src,tests
 ```
 
 This sets up pre-commit hooks so every commit runs the quality checks automatically.

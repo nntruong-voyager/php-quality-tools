@@ -1,6 +1,8 @@
 parameters:
   level: 5
-  paths:
-    - src
   excludePaths:
-    - tests/*
+    - vendor
+    - */vendor/*
+    - node_modules
+    - storage
+    - cache

@@ -1,7 +1,13 @@
 <?xml version="1.0"?>
 <ruleset name="Voyager PHP Standards">
   <description>PHP CodeSniffer rules.</description>
-  <file>src</file>
+  <!-- Exclude vendor and other common directories -->
   <exclude-pattern>vendor/*</exclude-pattern>
+  <exclude-pattern>*/vendor/*</exclude-pattern>
+  <exclude-pattern>node_modules/*</exclude-pattern>
+  <exclude-pattern>storage/*</exclude-pattern>
+  <exclude-pattern>cache/*</exclude-pattern>
+  <!-- Only check PHP files -->
+  <arg name="extensions" value="php"/>
   <rule ref="PSR12"/>
 </ruleset>
