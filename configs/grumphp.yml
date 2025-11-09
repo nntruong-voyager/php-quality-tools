@@ -1,7 +1,7 @@
 grumphp:
   hooks_dir: ~
   hooks_preset: local
-  stop_on_failure: true
+  stop_on_failure: false
   ignore_unstaged_changes: false
   hide_circumvention_tip: false
   process_timeout: 120

@@ -6,3 +6,6 @@ parameters:
     - node_modules
     - storage
     - cache
+  paths:
+    - src
+    - tests
