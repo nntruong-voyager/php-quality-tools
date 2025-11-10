@@ -123,7 +123,7 @@ If you want to **customize the rules for your project**, you can publish them:
 
 ```bash
 docker-compose exec php-quality-tools bash /project/vendor/voyager/php-quality-tools/scripts/publish-configs.sh
-
+```
 
 ---
 
