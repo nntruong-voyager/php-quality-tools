@@ -20,6 +20,7 @@ grumphp:
     phpstan:
       configuration: vendor/voyager/php-quality-tools/configs/phpstan.neon
       level: 5
+      memory_limit: '1G'
       triggered_by: ['php']
       ignore_patterns:
         - vendor/
