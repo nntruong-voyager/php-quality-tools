@@ -1,5 +1,5 @@
 FROM php:8.2-cli
-LABEL maintainer="nntruong-voyager"
+LABEL maintainer="Voyager"
 
 RUN apt-get update && apt-get install -y --no-install-recommends     git unzip zip libzip-dev libpng-dev libonig-dev ca-certificates     && rm -rf /var/lib/apt/lists/*
 
